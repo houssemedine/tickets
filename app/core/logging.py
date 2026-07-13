@@ -1,6 +1,8 @@
 """Logging configuration."""
+
 import logging
 from logging import Logger
+
 
 def setup_logging(level: int = logging.INFO) -> Logger:
     """Configure root logger + uvicorn loggers."""

@@ -8,3 +8,12 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Test and lint caches
+.coverage
+htmlcov/
+.pytest_cache/
+.ruff_cache/
+
+# macOS
+.DS_Store
