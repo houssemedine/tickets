@@ -1,11 +1,12 @@
 [project]
 name = "tickets"
 version = "1.0.0"
-description = "Add your description here"
+description = "projet d'entretien, gestion des tickets"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "fastapi[standard]>=0.139.0",
+    "sqlalchemy>=2.0",
 ]
 
 [dependency-groups]
