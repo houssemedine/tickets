@@ -4,6 +4,7 @@ from app.models.ticket import Ticket
 from app.schemas.ticket import TicketCreate, TicketUpdate, TicketStatus
 from sqlalchemy import func
 
+
 class TicketRepository:
     """Accès données pour les tickets"""
 
@@ -26,7 +27,7 @@ class TicketRepository:
         self.db.refresh(obj)
         return obj
 
-    def get_by_id(self, ticket_id:int)-> Optional[Ticket]:
+    def get_by_id(self, ticket_id: int) -> Optional[Ticket]:
         """Retourne un ticket par son ID, ou None si introuvable."""
         item = self.db.get(Ticket, ticket_id)
 
@@ -45,7 +46,7 @@ class TicketRepository:
         return obj
 
     def close(self, ticket_id: int) -> Optional[Ticket]:
-        """Ferme un ticket. 
+        """Ferme un ticket.
         - Retourne None si introuvable.
         - Retourne 'already_closed' si le ticket est déjà fermé.
         - Sinon, ferme et retourne l'objet.
@@ -53,7 +54,7 @@ class TicketRepository:
         obj = self.db.get(Ticket, ticket_id)
         if obj is None:
             return None
-        #check si le ticket est déjà fermé
+        # check si le ticket est déjà fermé
         if obj.status == TicketStatus.CLOSED:
             return "already_closed"
         obj.status = TicketStatus.CLOSED
@@ -61,11 +62,10 @@ class TicketRepository:
         self.db.commit()
         self.db.refresh(obj)
         return obj
-    
+
     def count_all(self) -> int:
         return self.db.query(func.count(Ticket.id)).scalar() or 0
 
     def list_paginated(self, limit: int, offset: int) -> List[Ticket]:
         q = self.db.query(Ticket).order_by(Ticket.created_at, Ticket.id)
         return q.limit(limit).offset(offset).all()
-

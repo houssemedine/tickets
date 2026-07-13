@@ -1,4 +1,5 @@
 """Dépendaces pour les routes."""
+
 from collections.abc import Generator
 from sqlalchemy.orm import Session
 from app.core.db import SessionLocal
