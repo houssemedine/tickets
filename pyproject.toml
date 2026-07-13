@@ -1,7 +1,14 @@
 [project]
 name = "tickets"
-version = "0.1.0"
+version = "1.0.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "fastapi[standard]>=0.139.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
