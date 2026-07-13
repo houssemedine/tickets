@@ -3,7 +3,9 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from app.core.logging import setup_logging
 from app.core.db import engine
-from app.models.ticket import Base  
+from app.models.ticket import Base
+from app.routers.tickets import router as tickets_router
+
 
 
 
@@ -28,3 +30,8 @@ app = FastAPI(
 @app.get("/health", tags=["health"])
 def health_check():
     return {"status": "ok"}
+
+
+
+
+app.include_router(tickets_router, prefix="/v1/tickets", tags=["tickets"])
