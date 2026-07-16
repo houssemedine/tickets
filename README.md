@@ -17,7 +17,7 @@ schémas Pydantic et une suite de tests.
 - fermer un ticket.
 
 Chaque ticket possède un titre, une description, un statut et une date de
-création. Les statuts disponibles sont `open`, `stalled` et `closed`.
+création. Les statuts disponibles sont `open` et `closed`.
 
 ## Technologies utilisées
 

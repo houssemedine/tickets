@@ -5,7 +5,6 @@ from pydantic import BaseModel, Field, ConfigDict
 
 class TicketStatus(str, Enum):
     OPEN = "open"
-    STALLED = "stalled"
     CLOSED = "closed"
 
 

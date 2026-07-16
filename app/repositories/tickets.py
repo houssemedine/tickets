@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List, Literal, Optional
 from sqlalchemy.orm import Session
 from app.models.ticket import Ticket
 from app.schemas.ticket import TicketCreate, TicketUpdate, TicketStatus
@@ -45,7 +45,7 @@ class TicketRepository:
         self.db.refresh(obj)
         return obj
 
-    def close(self, ticket_id: int) -> Optional[Ticket]:
+    def close(self, ticket_id: int) -> Ticket | Literal["already_closed"] | None:
         """Ferme un ticket.
         - Retourne None si introuvable.
         - Retourne 'already_closed' si le ticket est déjà fermé.

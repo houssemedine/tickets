@@ -1,7 +1,11 @@
 import pytest
 from pydantic import ValidationError
 
-from app.schemas.ticket import TicketCreate
+from app.schemas.ticket import TicketCreate, TicketStatus
+
+
+def test_ticket_status_contains_expected_values():
+    assert {status.value for status in TicketStatus} == {"open", "closed"}
 
 
 def test_ticket_create_accepts_valid_payload():
